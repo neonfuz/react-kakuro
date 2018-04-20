@@ -1,0 +1,19 @@
+.Kakuro {
+    display: grid;
+    grid-area: Kakuro;
+    grid-gap: .22em;
+    background: grey;
+    border: solid grey .22em;
+    margin: 1em;
+}
+
+.KakuroWrapper {
+    display: grid;
+    grid-template-areas: ". Kakuro .";
+    grid-template-columns: 1fr auto 1fr;
+}
+
+.Square {
+    width: 4rem;
+    height: 4rem;
+}

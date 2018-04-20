@@ -4108,6 +4108,15 @@ let
         sha512 = "1y8kprb3qldxqj31zai5n8dvhydsl9nn5w4rskhnbzzhldn6pm6n5lcyam3sfkb61a62d5m58k8im7z6ngwbd9cw9zp4zm4y7ckrf20";
       };
     };
+    "hoist-non-react-statics-2.5.0" = {
+      name = "hoist-non-react-statics";
+      packageName = "hoist-non-react-statics";
+      version = "2.5.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-2.5.0.tgz";
+        sha512 = "3bvgj9sbamk2kv7p7s0ham8apqqpksjnkrb61h5kd5hbsl6hzydqibk4m7sljgfmax9w6ayr4cqz79az0d25nsis927pmnkq1g7l6g8";
+      };
+    };
     "home-or-tmp-2.0.0" = {
       name = "home-or-tmp";
       packageName = "home-or-tmp";
@@ -5636,6 +5645,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/lodash/-/lodash-4.17.5.tgz";
         sha512 = "11hikgyas884mz8a58vyixaahxbpdwljdw4cb6qp15xa3sfqikp2mm6wgv41jsl34nzsv1hkx9kw3nwczvas5p73whirmaz4sxggwmj";
+      };
+    };
+    "lodash-es-4.17.8" = {
+      name = "lodash-es";
+      packageName = "lodash-es";
+      version = "4.17.8";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.8.tgz";
+        sha512 = "2q3xx8rnq6lkc5w10lncllyxwxzzrk8jz2yf1xnvbpqf1jiq9k54a22m87b3x6zdykiplhfzglxmxl680c1dq94g4jm10572w1s7n93";
       };
     };
     "lodash._reinterpolate-3.0.0" = {
@@ -7510,6 +7528,15 @@ let
         sha512 = "33wryjj3sw0dkjak7b4b19fvfvzzz75q80a32z19cf45160xj848ps6xivg56czix1sd0wf9i4dg2y2n8j6vm9qx68wpj64mg2hynqn";
       };
     };
+    "react-redux-5.0.7" = {
+      name = "react-redux";
+      packageName = "react-redux";
+      version = "5.0.7";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/react-redux/-/react-redux-5.0.7.tgz";
+        sha512 = "231jvmg1dgkp31sfl0czszkz77sag822nlcznpmh28cgzk3r3c8rkfcwdyihv2d5a9mqajinn999fknbcq5pripr9h06xk1bq8kqlp5";
+      };
+    };
     "react-scripts-1.1.4" = {
       name = "react-scripts";
       packageName = "react-scripts";
@@ -7616,6 +7643,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/reduce-function-call/-/reduce-function-call-1.0.2.tgz";
         sha1 = "5a200bf92e0e37751752fe45b0ab330fd4b6be99";
+      };
+    };
+    "redux-4.0.0" = {
+      name = "redux";
+      packageName = "redux";
+      version = "4.0.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/redux/-/redux-4.0.0.tgz";
+        sha512 = "240n264mcfhdq767ikmzn43hk3vk9s1ncm5pd7xnchrqrn0mxfpy89wqiqrrbxmf74zlzws3dhwpbjzlnihgavwhlzm2nbl90bwfy9n";
       };
     };
     "regenerate-1.3.3" = {
@@ -8669,6 +8705,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/sw-toolbox/-/sw-toolbox-3.6.0.tgz";
         sha1 = "26df1d1c70348658e4dea2884319149b7b3183b5";
+      };
+    };
+    "symbol-observable-1.2.0" = {
+      name = "symbol-observable";
+      packageName = "symbol-observable";
+      version = "1.2.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/symbol-observable/-/symbol-observable-1.2.0.tgz";
+        sha512 = "1fxqjwdn747lxzkxrwhbw8arc9czdig47izx5hnzk22z8k7rnw00q8vcpy8v7a3xyamavwgg4mvjkpn2ihjiyjxjnhx2ihiryf39pbv";
       };
     };
     "symbol-tree-3.2.2" = {
@@ -10208,6 +10253,7 @@ let
       sources."he-1.1.1"
       sources."hmac-drbg-1.0.1"
       sources."hoek-4.2.1"
+      sources."hoist-non-react-statics-2.5.0"
       sources."home-or-tmp-2.0.0"
       sources."homedir-polyfill-1.0.1"
       sources."hosted-git-info-2.6.0"
@@ -10405,6 +10451,7 @@ let
       sources."loader-utils-1.1.0"
       sources."locate-path-2.0.0"
       sources."lodash-4.17.5"
+      sources."lodash-es-4.17.8"
       sources."lodash._reinterpolate-3.0.0"
       sources."lodash.camelcase-4.3.0"
       sources."lodash.cond-4.5.2"
@@ -10656,6 +10703,7 @@ let
       })
       sources."react-dom-16.3.2"
       sources."react-error-overlay-4.0.0"
+      sources."react-redux-5.0.7"
       (sources."react-scripts-1.1.4" // {
         dependencies = [
           sources."acorn-4.0.13"
@@ -10789,6 +10837,7 @@ let
       sources."redent-1.0.0"
       sources."reduce-css-calc-1.3.0"
       sources."reduce-function-call-1.0.2"
+      sources."redux-4.0.0"
       sources."regenerate-1.3.3"
       sources."regenerator-runtime-0.11.1"
       sources."regenerator-transform-0.10.1"
@@ -10956,6 +11005,7 @@ let
         ];
       })
       sources."sw-toolbox-3.6.0"
+      sources."symbol-observable-1.2.0"
       sources."symbol-tree-3.2.2"
       (sources."table-4.0.3" // {
         dependencies = [

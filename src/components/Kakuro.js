@@ -16,7 +16,7 @@ const Kakuro = ({solution, labels, boardSize}) => (
             gridColumn: x+1,
             gridRow: y+1,
           }
-          return (val !== 0) ? (
+          return (val !== undefined) ? (
             <ValSquare
               value={val}
               style={style} />

@@ -27,23 +27,25 @@ const genLabels = (solution) => {
 }
 
 const placeRandomNumber = (solution, x, y) => {
-  let numbers = []
+  const offsets = [
+    ({x, y}) => ({x, y: y+1}),
+    ({x, y}) => ({x: x+1, y}),
+    ({x, y}) => ({x, y: y-1}),
+    ({x, y}) => ({x: x-1, y}),
+  ]
 
-  ; [ {x: 0, y: 1},
-      {x: 1, y: 0},
-      {x: 0, y:-1},
-      {x:-1, y: 0}
-  ].forEach(offset => {
-    let [ X, Y ] = [ x + offset.x, y + offset.y ]
-    if (solution[Y] === undefined) return
-    let n = solution[Y][X]
-    while (n !== undefined) {
-      numbers.push(n)
-      ; [ X, Y ] = [ X + offset.x, Y + offset.y ]
-      if (solution[Y] === undefined) break
-      n = solution[Y][X]
-    }
-  })
+  // Traces in offset set direction, collects numbers until it hits a wall
+  const getNums = (offset, pos, nums) => {
+    if (solution[pos.y] === undefined || solution[pos.y][pos.x] === undefined)
+      return nums
+    const num = solution[pos.y][pos.x]
+    return getNums(offset, offset(pos), [...nums, num])
+  }
+
+  // Apply to all 4 directions
+  const numbers = offsets.reduce(
+    (nums, offset) => getNums(offset, ({x, y}), nums), []
+  )
 
   const remaining = numbers.reduce(
     (nums, val) => {

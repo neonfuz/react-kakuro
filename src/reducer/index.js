@@ -1,4 +1,5 @@
-import { map2d, equals, arrSet } from '../util';
+import { equals } from 'ramda'
+import { map2d, arrSet } from '../util';
 
 const genLabels = (solution) => {
   let labels = solution.map((row)=>

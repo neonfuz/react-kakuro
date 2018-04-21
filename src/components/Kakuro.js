@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import './Kakuro.css'
-import { flatten, map2d } from '../util';
+import { flatten } from 'ramda'
+import { map2d } from '../util';
 
 import Kaksquare from './Kaksquare'
 import ValSquare from './ValSquare'

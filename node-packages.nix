@@ -4,6 +4,24 @@
 
 let
   sources = {
+    "@babel/helper-module-imports-7.0.0-beta.44" = {
+      name = "_at_babel_slash_helper-module-imports";
+      packageName = "@babel/helper-module-imports";
+      version = "7.0.0-beta.44";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@babel/helper-module-imports/-/helper-module-imports-7.0.0-beta.44.tgz";
+        sha512 = "05vxs54xvk1lydrnggia6ylyw8d0kz8056cmsq5ndfqlmifrmp04x48ddynk78pn88gpgfjyl7kf5qx16jpb5wf6c5zfzf2ma5p1pjp";
+      };
+    };
+    "@babel/types-7.0.0-beta.44" = {
+      name = "_at_babel_slash_types";
+      packageName = "@babel/types";
+      version = "7.0.0-beta.44";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@babel/types/-/types-7.0.0-beta.44.tgz";
+        sha512 = "0nrz4iv3szq8v37wfl1bl12gw0swwcc2185a0h9kgd3i3rj3ky1ls3vivgj9ddyqjgwxc8j9qji0ccn11q81zbv6f2vdab6ckhxbr75";
+      };
+    };
     "abab-1.0.4" = {
       name = "abab";
       packageName = "abab";
@@ -785,6 +803,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-20.0.3.tgz";
         sha1 = "afedc853bd3f8dc3548ea671fbe69d03cc2c1767";
+      };
+    };
+    "babel-plugin-ramda-1.6.1" = {
+      name = "babel-plugin-ramda";
+      packageName = "babel-plugin-ramda";
+      version = "1.6.1";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/babel-plugin-ramda/-/babel-plugin-ramda-1.6.1.tgz";
+        sha512 = "0gdsahnc24bj8rlp1ifr40lzwzvnaa5lx8jq9c01mdx1mw9zwrd3alcy29n7308xxk13zlz2iy99pl2pwmpza8vb5gy9flpyjy241rn";
       };
     };
     "babel-plugin-syntax-async-functions-6.13.0" = {
@@ -7438,6 +7465,15 @@ let
         sha512 = "0dy6m7x3nq45cahsigaz5wm6s4ijpxqgq3lq9azjl1b4yngddk2wflhacfkr0f7lj0dfls1mhnhm460hksck7qhmvgq8pj0qhsgycx4";
       };
     };
+    "ramda-0.25.0" = {
+      name = "ramda";
+      packageName = "ramda";
+      version = "0.25.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/ramda/-/ramda-0.25.0.tgz";
+        sha512 = "1qixam46hr8jsw2f4g0rvhn8jf493dpjqhi65ggacz83ndqwnal1m8kiy18d3ak9x4lapcjb1fvrx18zj26jfhlxp51vhsghnnmyyhr";
+      };
+    };
     "randomatic-1.1.7" = {
       name = "randomatic";
       packageName = "randomatic";
@@ -8860,6 +8896,15 @@ let
         sha1 = "b83571fa4d8c25b82e231b06e3a3055de4ca1a47";
       };
     };
+    "to-fast-properties-2.0.0" = {
+      name = "to-fast-properties";
+      packageName = "to-fast-properties";
+      version = "2.0.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/to-fast-properties/-/to-fast-properties-2.0.0.tgz";
+        sha1 = "dc5e698cbd079265bc73e0377681a4e4e83f616e";
+      };
+    };
     "to-object-path-0.3.0" = {
       name = "to-object-path";
       packageName = "to-object-path";
@@ -9004,13 +9049,13 @@ let
         sha1 = "29c5733148057bb4e1f75df35b7a9cb72e6a59dd";
       };
     };
-    "uglify-js-3.3.21" = {
+    "uglify-js-3.3.22" = {
       name = "uglify-js";
       packageName = "uglify-js";
-      version = "3.3.21";
+      version = "3.3.22";
       src = fetchurl {
-        url = "https://registry.npmjs.org/uglify-js/-/uglify-js-3.3.21.tgz";
-        sha512 = "04dhrcv9g3snw6vdxi2pw9xbcnygryf6naq2gfmvwvp3img6pg8p39k5hgqlx0pr1mgwxsaccrgjmi075vlpqxdhincn7x5ppikcbxv";
+        url = "https://registry.npmjs.org/uglify-js/-/uglify-js-3.3.22.tgz";
+        sha512 = "0ii3py6fs2bwqiqm2fd343cyqgy2854hvxzch3p0kp92xdjcxxqf1wnmmnak4dxs746zk7rc91d6f44bn5m8fdkxjz13z7snbm3vb5n";
       };
     };
     "uglify-to-browserify-1.0.2" = {
@@ -9722,6 +9767,8 @@ let
     version = "0.1.0";
     src = ./.;
     dependencies = [
+      sources."@babel/helper-module-imports-7.0.0-beta.44"
+      sources."@babel/types-7.0.0-beta.44"
       sources."abab-1.0.4"
       sources."accepts-1.3.5"
       sources."acorn-5.5.3"
@@ -9835,6 +9882,7 @@ let
         ];
       })
       sources."babel-plugin-jest-hoist-20.0.3"
+      sources."babel-plugin-ramda-1.6.1"
       sources."babel-plugin-syntax-async-functions-6.13.0"
       sources."babel-plugin-syntax-class-properties-6.13.0"
       sources."babel-plugin-syntax-dynamic-import-6.18.0"
@@ -10674,6 +10722,7 @@ let
       sources."querystring-es3-0.2.1"
       sources."querystringify-0.0.4"
       sources."raf-3.4.0"
+      sources."ramda-0.25.0"
       (sources."randomatic-1.1.7" // {
         dependencies = [
           (sources."is-number-3.0.0" // {
@@ -10816,6 +10865,7 @@ let
           sources."strip-ansi-4.0.0"
           sources."strip-bom-3.0.0"
           sources."supports-color-2.0.0"
+          sources."to-fast-properties-1.0.3"
           (sources."uglify-js-2.8.29" // {
             dependencies = [
               sources."source-map-0.5.7"
@@ -11001,7 +11051,7 @@ let
           sources."string-width-2.1.1"
           sources."strip-bom-2.0.0"
           sources."supports-color-5.4.0"
-          sources."uglify-js-3.3.21"
+          sources."uglify-js-3.3.22"
         ];
       })
       sources."sw-toolbox-3.6.0"
@@ -11030,7 +11080,7 @@ let
       sources."tmp-0.0.33"
       sources."tmpl-1.0.4"
       sources."to-arraybuffer-1.0.1"
-      sources."to-fast-properties-1.0.3"
+      sources."to-fast-properties-2.0.0"
       sources."to-object-path-0.3.0"
       sources."to-regex-3.0.2"
       sources."to-regex-range-2.1.1"
@@ -11046,7 +11096,7 @@ let
       sources."type-is-1.6.16"
       sources."typedarray-0.0.6"
       sources."ua-parser-js-0.7.17"
-      sources."uglify-js-3.3.21"
+      sources."uglify-js-3.3.22"
       sources."uglify-to-browserify-1.0.2"
       sources."uglifyjs-webpack-plugin-0.4.6"
       (sources."union-value-1.0.0" // {

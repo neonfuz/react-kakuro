@@ -5,6 +5,4 @@ const map2d = (arr, cb) =>
     )
   )
 
-const arrSet = (arr, i, val) => Object.assign(arr, {[i]: val})
-
-export { map2d, arrSet };
+export { map2d };

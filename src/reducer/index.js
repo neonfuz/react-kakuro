@@ -1,5 +1,5 @@
-import { equals } from 'ramda'
-import { map2d, arrSet } from '../util';
+import { equals, set, lensIndex } from 'ramda'
+import { map2d } from '../util';
 
 const genLabels = (solution) => {
   let labels = solution.map((row)=>
@@ -56,14 +56,14 @@ const placeRandomNumber = (solution, x, y) => {
     Math.floor(Math.random() * (remaining.length+1))
   ]
 
-  return arrSet(
-    solution,
-    y,
-    arrSet(
-      solution[y],
-      x,
-      newVal
-    )
+  return set(
+    lensIndex(y),
+    set(
+      lensIndex(x),
+      newVal,
+      solution[y]
+    ),
+    solution
   )
 }
 

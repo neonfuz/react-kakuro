@@ -1,5 +1,7 @@
 import { equals, set, lensIndex } from 'ramda'
-import { map2d } from './util';
+import { map2d } from './util'
+
+import { REGENERATE } from './actions'
 
 const genLabels = (solution) => {
   let labels = solution.map((row)=>
@@ -13,12 +15,12 @@ const genLabels = (solution) => {
         for (let X = x; X >= 0; --X)
           if (solution[y][X] === undefined) {
             labels[y][X].rightNum = (labels[y][X].rightNum || 0) + solution[y][x]
-            break;
+            break
           }
         for (let Y = y; Y >= 0; --Y)
           if (solution[Y][x] === undefined) {
             labels[Y][x].downNum = (labels[Y][x].downNum || 0) + solution[y][x]
-            break;
+            break
           }
       }
     }
@@ -83,7 +85,7 @@ const randomFill = (solution, x, y) => {
   return randomFill(solution, (x + 1), y)
 }
 
-const defaultSolution = ((size = 10) =>
+const newSolution = (size = 10) =>
   randomFill(
     map2d(
       [
@@ -94,7 +96,6 @@ const defaultSolution = ((size = 10) =>
     ),
     0, 0
   )
-)()
 
 const stateFromSolution = solution => ({
   solution,
@@ -105,10 +106,14 @@ const stateFromSolution = solution => ({
   },
 })
 
-const defaultState = stateFromSolution(defaultSolution)
+const defaultState = stateFromSolution(newSolution())
 
 export default (state = defaultState, action = {}) => {
   switch (action.type) {
+    case REGENERATE: return {
+      ...state,
+      ...stateFromSolution(newSolution()),
+    }
     default: return state
   }
 }

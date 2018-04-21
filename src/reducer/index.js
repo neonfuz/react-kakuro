@@ -26,20 +26,81 @@ const genLabels = (solution) => {
   return Object.freeze(labels)
 }
 
-const defaultSolution = map2d(
-  [
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 1, 2, 3, 4, 5, 6],
-    [0, 0, 0, 2, 0, 0, 0],
-    [0, 3, 1, 4, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-  ],
-  val => val || undefined
-  // Turn zeros to undefined
-  // For convenience of editing
-);
+const placeRandomNumber = (solution, x, y) => {
+  let numbers = []
+
+  ; [ {x: 0, y: 1},
+      {x: 1, y: 0},
+      {x: 0, y:-1},
+      {x:-1, y: 0}
+  ].forEach(offset => {
+    let [ X, Y ] = [ x + offset.x, y + offset.y ]
+    if (solution[Y] === undefined) return
+    let n = solution[Y][X]
+    while (n !== undefined) {
+      numbers.push(n)
+      ; [ X, Y ] = [ X + offset.x, Y + offset.y ]
+      if (solution[Y] === undefined) break
+      n = solution[Y][X]
+    }
+  })
+
+  const remaining = numbers.reduce(
+    (nums, val) => {
+      const i = nums.findIndex(a => a === val)
+      if (i === -1) return nums
+      let n = [...nums]
+      n.splice(i, 1) // Removes element, don't return this
+      return n
+    },
+    [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+  )
+
+  const newVal = remaining[
+    Math.floor(Math.random() * remaining.length)
+  ]
+
+  const arrSet = (arr, i, val) => Object.assign(arr, {[i]: val})
+
+  return arrSet(
+    solution,
+    y,
+    arrSet(
+      solution[y],
+      x,
+      newVal
+    )
+  )
+}
+
+const randomFill = (solution, x, y) => {
+  if (solution[y][x] === 0)
+    return randomFill(
+      placeRandomNumber(solution, x, y),
+      x, y
+    )
+
+  if (x === solution[y].length - 1) {
+    if (y === solution.length - 1)
+      return solution
+    return randomFill(solution, 0, y+1)
+  }
+
+  return randomFill(solution, (x + 1), y)
+}
+
+const defaultSolution = ((size = 10) =>
+  randomFill(
+    map2d(
+      [
+        Array(size).fill(0),
+        ...(Array(size-1).fill( [ 0, ...Array(size-1).fill(1) ] ))
+      ],
+      val => (val === 1) && (0.25 < Math.random()) ? 0 : undefined
+    ),
+    0, 0
+  )
+)()
 
 const stateFromSolution = solution => ({
   solution,

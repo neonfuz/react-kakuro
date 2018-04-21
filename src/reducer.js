@@ -1,5 +1,5 @@
 import { equals, set, lensIndex } from 'ramda'
-import { map2d } from '../util';
+import { map2d } from './util';
 
 const genLabels = (solution) => {
   let labels = solution.map((row)=>

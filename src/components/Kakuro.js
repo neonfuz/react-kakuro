@@ -18,10 +18,12 @@ const Kakuro = ({solution, labels, boardSize}) => (
           }
           return (val !== undefined) ? (
             <ValSquare
+              key={`Kakuro-${x}-${y}`}
               value={val}
               style={style} />
           ) : (
             <Kaksquare
+              key={`Kakuro-${x}-${y}`}
               rightNum={label.rightNum}
               downNum={label.downNum}
               style={style} />

@@ -1,4 +1,4 @@
-import { map2d } from '../util';
+import { map2d, equals, arrSet } from '../util';
 
 const genLabels = (solution) => {
   let labels = solution.map((row)=>
@@ -47,22 +47,13 @@ const placeRandomNumber = (solution, x, y) => {
     (nums, offset) => getNums(offset, ({x, y}), nums), []
   )
 
-  const remaining = numbers.reduce(
-    (nums, val) => {
-      const i = nums.findIndex(a => a === val)
-      if (i === -1) return nums
-      let n = [...nums]
-      n.splice(i, 1) // Removes element, don't return this
-      return n
-    },
-    [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+  const remaining = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ].filter(
+    n => !numbers.find(equals(n))
   )
 
   const newVal = remaining[
-    Math.floor(Math.random() * remaining.length)
+    Math.floor(Math.random() * (remaining.length+1))
   ]
-
-  const arrSet = (arr, i, val) => Object.assign(arr, {[i]: val})
 
   return arrSet(
     solution,

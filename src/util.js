@@ -9,4 +9,7 @@ const map2d = (arr, cb) =>
     )
   )
 
-export { flatten, map2d };
+const equals = a => b => a === b
+const arrSet = (arr, i, val) => Object.assign(arr, {[i]: val})
+
+export { flatten, map2d, equals, arrSet };
